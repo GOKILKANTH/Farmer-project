@@ -1,6 +1,6 @@
 package com.tnfarm.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity

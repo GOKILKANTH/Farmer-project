@@ -1,6 +1,6 @@
 package com.tnfarm.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Market {
