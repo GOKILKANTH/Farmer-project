@@ -23,11 +23,14 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder)
-                .and()
-                .build();
+        AuthenticationManagerBuilder builder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        try {
+            builder.userDetailsService(userDetailsService)
+                    .passwordEncoder(passwordEncoder);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return builder.build();
     }
 
     @Bean
